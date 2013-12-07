@@ -1,0 +1,29 @@
+-> notepass.de <-
+KSP Mod-Manager:
+Version: %s
+Datum: %s (YYYY-MM-DD)
+
+Der KSP Mod-Manager ist ein Tool zum Verwalten von installierten Mods und Savegames fuer das Spiel
+Kerbal Space Program. Der Mod-Manager wurde von notepass ins Leben gerufen und programmiert.
+Die Originalversion stammt ausschliesslich von notepass.de.
+
+Features:
+- Vollkommen portable: Nehmt eure gesamten Mods auf einem USB-Stick mit
+- Standalone: Ihr muesst nur die jar-Datei herunterladen, diese erstellt saemtliche verzeichnisse und Dateien
+- Mods ueber Knopfdruck installieren/deinstallieren
+- Extrem uebersichtlicher Aufbau: Alle Funktionen sind in 6 Tabs untergebracht. Keine Submenues oder sonstiges!
+- Das Programm muss nach Aenderungen der Konfiguration nicht neugestartet werden
+- Schutzfunktionen: Es wird staendig ueberprueft, ob der Zielordner noch gueltig ist. Das Programm warnt bei inkopatiblen Mods
+- Saemtliche Dateien welche sich in den Ordnern befinden, werden automatisch aufgelistet 
+- Es wird ueberprueft, ob Mods bereits installiert sind 
+- Dynamische Installationen: Es ist auch moeglich nur bestimmte Teile zur Installation auswaehlen
+- Profile: Man kann Konfigurationen fuer verschiedene KSP-Installationen erstellen 
+- Savegame-Manager: Macht Backups euerer Savegames, aktualisiert diese oder nutzt diese um Fehler wieder auszubuegeln
+- Verschiedene Sprachen: Ihr koennt selbst Dateien fuer andere Sprachen erstellen und diese teilen. Mitgeliefert wird eine deutsche und englische Version
+
+Credits
+-------
+notepass - Projektersteller
+Squad - Kerbal Space Program
+Saphirian - Hilfe beim Java Port, GUI
+viralpatel.net - Code zum Einlesen von XML-Dateien/XPath-Funktionen
