@@ -1,5 +1,6 @@
 package de.notepass.KSPModManager.test;
 
+import de.notepass.general.util.Util;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -7,6 +8,9 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,7 +22,9 @@ import javafx.stage.Stage;
  */
 public class test extends Application {
     public static void main(String [] args) {
+        System.out.println("A");
         launch(args);
+        System.out.println("B");
     }
 
     public void start(Stage primaryStage) {

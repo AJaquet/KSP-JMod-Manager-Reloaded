@@ -1,8 +1,8 @@
 .GroupBoxTitle {
     /*-fx-background-color: rgba(0,0,0,0);*/
-    -fx-background-color: -fx-box-border,-fx-background;
+    -fx-background-color: white;
     -fx-font-size: 12px;
-    -fx-translate-y: -10;
+    -fx-translate-y: -20;
 }
 
 .GroupBoxBorder {

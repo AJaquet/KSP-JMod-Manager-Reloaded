@@ -22,7 +22,7 @@ public class GroupBox extends StackPane {
 
     public GridPane contentPane = new GridPane();
     private Label title = new Label();
-    public static String cssFile = Util.createLoadString("style/GroupBox.css");
+    public static String cssFile = Util.createLoadString("style/GroupBox_Fixed.css");
 
     public GroupBox (String titleString, TitlePos tp) {
 

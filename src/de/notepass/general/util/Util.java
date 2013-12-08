@@ -17,6 +17,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.nio.channels.FileChannel;
 import java.util.Enumeration;
 import java.util.Locale;
 import java.util.Scanner;
@@ -359,6 +360,14 @@ public class Util implements Serializable {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Rectangle bounds = ge.getMaximumWindowBounds();
         return bounds.getSize();
+    }
+
+    public static void copy(File source, File destination) throws IOException {
+        //File in = new File(source);
+        //File out = new File(destination);
+        FileChannel inChannel = new FileInputStream(source).getChannel();
+        FileChannel outChannel = new FileOutputStream(destination).getChannel();
+        inChannel.transferTo(0, inChannel.size(), outChannel);
     }
 
 }
