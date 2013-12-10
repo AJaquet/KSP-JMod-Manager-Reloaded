@@ -1,5 +1,8 @@
 package de.notepass.KSPModManager.test;
 
+import de.notepass.KSPModManager.gui.FxGui;
+import de.notepass.KSPModManager.objects.Mod;
+import de.notepass.general.logger.Log;
 import de.notepass.general.util.Util;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -9,22 +12,35 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created with IntelliJ IDEA.
- * Creator: Kim Hayo
- * Date: 06.12.13
- * Time: 08:52
- * As part of the project KSP-JMod-Manager
- * As part of the package de.notepass.KSPModManager.test
- */
-public class test extends Application {
+public class test {
     public static void main(String [] args) {
-        System.out.println("A");
-        launch(args);
-        System.out.println("B");
+        FxGui.main(args);
+
+        Mod mod = new Mod("Mod Name","Mod version");
+        mod.getDllFiles().add("DLL 1");
+        mod.getDllFiles().add("DLL 2");
+        mod.getDllFiles().add("DLL 3");
+
+        mod.getPartFiles().add("Part 1");
+        mod.getPartFiles().add("Part 2");
+        mod.getPartFiles().add("Part 3");
+        mod.getPartFiles().add("Part 4");
+        try {
+            mod.saveToFile();
+        } catch (ParserConfigurationException e) {
+            //Log.logError(e);
+            //Util.showError(e);
+            e.printStackTrace();
+        } catch (TransformerException e) {
+            //Log.logError(e);
+            //Util.showError(e);
+            e.printStackTrace();
+        }
     }
 
     public void start(Stage primaryStage) {

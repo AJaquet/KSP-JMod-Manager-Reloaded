@@ -3,7 +3,7 @@ package de.notepass.KSPModManager.gui;
 import de.notepass.KSPModManager.ButtonListener;
 import de.notepass.KSPModManager.SwingConfig;
 import de.notepass.KSPModManager.KSPModManager;
-import de.notepass.general.internalConfig.InternalConfigDummy;
+import de.notepass.general.internalConfig.GeneralConfig;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -91,7 +91,7 @@ public class SwingGui {
         window.setLocationRelativeTo(null);
         window.setResizable(false);
         window.setAlwaysOnTop(false);
-        window.setTitle("KSP Mod-Manager: V. " + InternalConfigDummy.showedVersion);
+        window.setTitle("KSP Mod-Manager: V. " + ""/*TODO: Add Version*/);
         window.setLayout(null);
         window.setIconImage(loadImageFromJar("icon.png"));
 
@@ -206,7 +206,7 @@ public class SwingGui {
         paneTextTabInfo.setBounds(20, 20, 650, 455);
         paneTextTabInfo.setEditable(false);
         paneTextTabInfo.setBackground(null);
-        paneTextTabInfo.setText(String.format(loadTextFileFromJar("information.txt"), InternalConfigDummy.version, "0000-00-00" /*TODO: Add date*/));
+        paneTextTabInfo.setText(String.format(loadTextFileFromJar("information.txt"), ""/*TODO: Add Version*/, "0000-00-00" /*TODO: Add date*/));
         String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
         for (int i = 0; i < fonts.length; i++)
         {

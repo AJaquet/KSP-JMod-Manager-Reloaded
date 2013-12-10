@@ -5,8 +5,6 @@ import de.notepass.KSPModManager.gui.SwingGui;
 //TODO: Put in comments (Lang.: English)
 //TODO: Add method to set value of labels that will be updated
 
-//TODO: [notepass] !IMPORTANT! Add XML-Lang Files (Working with XPath) -- @saph: I think i will do this ;)
-
 
 public class KSPModManager {
     /**

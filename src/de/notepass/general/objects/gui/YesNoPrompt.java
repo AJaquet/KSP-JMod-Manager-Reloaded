@@ -1,6 +1,6 @@
 package de.notepass.general.objects.gui;
 
-import de.notepass.general.internalConfig.InternalConfigDummy;
+import de.notepass.general.internalConfig.GeneralConfig;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -34,12 +34,12 @@ public class YesNoPrompt extends Application {
         final BorderPane layoutPane = new BorderPane();
         final HBox promptText = new HBox();
         promptText.setAlignment(Pos.TOP_CENTER);
-        promptText.setPadding(InternalConfigDummy.guiDefaultPadding);
+        promptText.setPadding(GeneralConfig.guiDefaultPadding);
         final HBox promptButtons = new HBox();
-        promptButtons.setSpacing(InternalConfigDummy.guiDefaultSpacing);
+        promptButtons.setSpacing(GeneralConfig.guiDefaultSpacing);
         promptButtons.setAlignment(Pos.BASELINE_RIGHT);
         promptButtons.setStyle("-fx-background-color: -fx-box-border,-fx-background;");
-        promptButtons.setPadding(InternalConfigDummy.guiDefaultPadding);
+        promptButtons.setPadding(GeneralConfig.guiDefaultPadding);
         //Setting up Text and Buttons
         layoutPane.setCenter(promptText);
         layoutPane.setBottom(promptButtons);

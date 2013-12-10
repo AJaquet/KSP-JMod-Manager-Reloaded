@@ -4,7 +4,7 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import de.notepass.general.internalConfig.InternalConfigDummy;
+import de.notepass.general.internalConfig.GeneralConfig;
 import de.notepass.general.util.Util;
 
 //This is the Log Class. It contains every log function
@@ -14,7 +14,7 @@ public class Log {
     private static String readConfig(String part) {
         try {
             //Reading an XML-String via XPath
-            return Util.nodeListToString(Util.executeXPath(InternalConfigDummy.logConfPath, InternalConfigDummy.logXMLlog_config + part + "/text()"));
+            return Util.nodeListToString(Util.executeXPath(GeneralConfig.logConfPath, GeneralConfig.logXMLlog_config + part + "/text()"));
         } catch (Exception e) {
             //If there is an Error in the Config, the Programm will give a StackTrace and an Easy to undestand error Message for the End-User
             e.printStackTrace();
@@ -32,9 +32,9 @@ public class Log {
         Date logTime = new Date();
         SimpleDateFormat formatDate = new SimpleDateFormat();
         //The pattern for output is read from the config-File
-        formatDate.applyPattern(readConfig(InternalConfigDummy.logXMLdateTimeFormat));
+        formatDate.applyPattern(readConfig(GeneralConfig.logXMLdateTimeFormat));
         //And there it goes. As String of course
-        return readConfig(InternalConfigDummy.logXMLdateTimePrefix)+formatDate.format(logTime)+readConfig(InternalConfigDummy.logXMLdateTimeSuffix);
+        return readConfig(GeneralConfig.logXMLdateTimePrefix)+formatDate.format(logTime)+readConfig(GeneralConfig.logXMLdateTimeSuffix);
     }
 
     //This function will bring a logges text into an Textfile
@@ -42,7 +42,7 @@ public class Log {
         //Declare Variables
         FileOutputStream logFileStream = null;
         //reads the path for the output file from the Config
-        String filePath = readConfig(InternalConfigDummy.logXMLpath);
+        String filePath = readConfig(GeneralConfig.logXMLpath);
         //Add an break to the Text, so it breaks lines in the textfile
         text = text + "\r\n";
         try {
@@ -86,49 +86,49 @@ public class Log {
     //The function to log an Debug-Message
     public static void logDebug(String logText) {
         //Does the config tell us to save it?
-        if (readConfig(InternalConfigDummy.logXMLlogDebug).toLowerCase().equals("true")) {
+        if (readConfig(GeneralConfig.logXMLlogDebug).toLowerCase().equals("true")) {
             //If yes, we will output it in the Shell and the log-File
-            System.out.println(giveLogTimeFormatted() + readConfig(InternalConfigDummy.logXMLlogDebugText) + logText);
-            logTextToFile(giveLogTimeFormatted() + readConfig(InternalConfigDummy.logXMLlogDebugText) + logText);
+            System.out.println(giveLogTimeFormatted() + readConfig(GeneralConfig.logXMLlogDebugText) + logText);
+            logTextToFile(giveLogTimeFormatted() + readConfig(GeneralConfig.logXMLlogDebugText) + logText);
         }
     }
 
     //The function to log an Info-Message
     public static void logInfo(String logText) {
         //Does the config tell us to save it?
-        if (readConfig(InternalConfigDummy.logXMLlogInfo).toLowerCase().equals("true")) {
+        if (readConfig(GeneralConfig.logXMLlogInfo).toLowerCase().equals("true")) {
             //If yes, we will output it in the Shell and the log-File
-            System.out.println(giveLogTimeFormatted() + readConfig(InternalConfigDummy.logXMLlogInfoText) + logText);
-            logTextToFile(giveLogTimeFormatted() + readConfig(InternalConfigDummy.logXMLlogInfoText) + logText);
+            System.out.println(giveLogTimeFormatted() + readConfig(GeneralConfig.logXMLlogInfoText) + logText);
+            logTextToFile(giveLogTimeFormatted() + readConfig(GeneralConfig.logXMLlogInfoText) + logText);
         }
     }
 
     //This function logs a warning-message
     public static void logWarning(String logText) {
         //Should we save it?
-        if (readConfig(InternalConfigDummy.logXMLlogWarn).toLowerCase().equals("true")) {
+        if (readConfig(GeneralConfig.logXMLlogWarn).toLowerCase().equals("true")) {
             //If yes, the output goes to the Shell and the File
-            System.out.println(giveLogTimeFormatted() + readConfig(InternalConfigDummy.logXMLlogWarnText) + logText);
-            logTextToFile(giveLogTimeFormatted() + readConfig(InternalConfigDummy.logXMLlogWarnText) + logText);
+            System.out.println(giveLogTimeFormatted() + readConfig(GeneralConfig.logXMLlogWarnText) + logText);
+            logTextToFile(giveLogTimeFormatted() + readConfig(GeneralConfig.logXMLlogWarnText) + logText);
         }
     }
 
     public static void logInfo(String [] logText) {
-        if (readConfig(InternalConfigDummy.logXMLlogInfo).toLowerCase().equals("true")) {
+        if (readConfig(GeneralConfig.logXMLlogInfo).toLowerCase().equals("true")) {
             logInfo(logText[0]);
             for (int i=1; i<logText.length; i++) {
-                System.out.println("\t" + readConfig(InternalConfigDummy.logXMLlogInfoText) + logText);
-                logTextToFile("\t" + readConfig(InternalConfigDummy.logXMLlogInfoText) + logText);
+                System.out.println("\t" + readConfig(GeneralConfig.logXMLlogInfoText) + logText);
+                logTextToFile("\t" + readConfig(GeneralConfig.logXMLlogInfoText) + logText);
             }
         }
     }
 
     public static void logWarning(String [] logText) {
-        if (readConfig(InternalConfigDummy.logXMLlogWarn).toLowerCase().equals("true")) {
+        if (readConfig(GeneralConfig.logXMLlogWarn).toLowerCase().equals("true")) {
             logWarning(logText[0]);
             for (int i=1; i<logText.length; i++) {
-                System.out.println("\t" + readConfig(InternalConfigDummy.logXMLlogWarnText) + logText);
-                logTextToFile("\t" + readConfig(InternalConfigDummy.logXMLlogWarnText) + logText);
+                System.out.println("\t" + readConfig(GeneralConfig.logXMLlogWarnText) + logText);
+                logTextToFile("\t" + readConfig(GeneralConfig.logXMLlogWarnText) + logText);
             }
         }
     }
@@ -136,19 +136,19 @@ public class Log {
     //This is the logger for the Error-Messages
     public static void logError(String logText) {
         //Should we save them?
-        if (readConfig(InternalConfigDummy.logXMLlogError).toLowerCase().equals("true")) {
+        if (readConfig(GeneralConfig.logXMLlogError).toLowerCase().equals("true")) {
             //If yes, put the Text in the Shell and the File
-            System.out.println(giveLogTimeFormatted() + readConfig(InternalConfigDummy.logXMLlogErrorText) + logText);
-            logTextToFile(giveLogTimeFormatted() + readConfig(InternalConfigDummy.logXMLlogErrorText) + logText);
+            System.out.println(giveLogTimeFormatted() + readConfig(GeneralConfig.logXMLlogErrorText) + logText);
+            logTextToFile(giveLogTimeFormatted() + readConfig(GeneralConfig.logXMLlogErrorText) + logText);
         }
     }
 
     public static void logError(String [] logText) {
-        if (readConfig(InternalConfigDummy.logXMLlogError).toLowerCase().equals("true")) {
+        if (readConfig(GeneralConfig.logXMLlogError).toLowerCase().equals("true")) {
             logError(logText[0]);
             for (int i=1; i<logText.length; i++) {
-                System.out.println("\t" + readConfig(InternalConfigDummy.logXMLlogErrorText) + logText);
-                logTextToFile("\t" + readConfig(InternalConfigDummy.logXMLlogErrorText) + logText);
+                System.out.println("\t" + readConfig(GeneralConfig.logXMLlogErrorText) + logText);
+                logTextToFile("\t" + readConfig(GeneralConfig.logXMLlogErrorText) + logText);
             }
         }
     }

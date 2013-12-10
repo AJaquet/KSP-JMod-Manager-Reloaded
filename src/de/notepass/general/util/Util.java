@@ -1,5 +1,6 @@
 package de.notepass.general.util;
 
+import de.notepass.general.internalConfig.GeneralConfig;
 import de.notepass.general.logger.Log;
 import de.notepass.general.objects.gui.GroupBox;
 import org.w3c.dom.Document;
@@ -26,8 +27,6 @@ import java.util.jar.JarFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import de.notepass.general.internalConfig.InternalConfigDummy;
-
 //The Util-Class of this project. You will find random stuff here...
 public class Util implements Serializable {
 
@@ -38,7 +37,7 @@ public class Util implements Serializable {
     //This function can read the Config-File of the program
     public static String readConfig(String node) {
         try {
-            return Util.nodeListToString(Util.executeXPath(InternalConfigDummy.configRoot+"/conf.xml","/config/"+node+"/text()"));
+            return Util.nodeListToString(Util.executeXPath(GeneralConfig.configRoot+"/conf.xml","/config/"+node+"/text()"));
         } catch (Exception e) {
             Log.logError(e);
             Log.logError("Couldn't read the main Config file... Stopping...");
@@ -136,7 +135,7 @@ public class Util implements Serializable {
         String langFile = readConfig("langFile");
         try {
             //Reads the Translation
-            String worker = Util.nodeListToString(Util.executeXPath(InternalConfigDummy.langRoot+"/"+langFile,"/lang/"+id+"/text()"));
+            String worker = Util.nodeListToString(Util.executeXPath(GeneralConfig.langRoot+"/"+langFile,"/lang/"+id+"/text()"));
             worker = worker.replaceAll(Pattern.quote("\\r"),"\r");
             worker = worker.replaceAll(Pattern.quote("\\n"),"\n");
             return worker;
@@ -310,27 +309,6 @@ public class Util implements Serializable {
         {
             if ( writer != null)
                 writer.close( );
-        }
-    }
-
-    //Increase the Build-Count if it's "my" Developer Version
-    public static void increaseBuild() {
-        if (InternalConfigDummy.versionType.equals(InternalConfigDummy.versionTypeUnreleased)) {
-            int build = 0;
-            String builds = new String();
-            try {
-                builds = Util.readTextFile(InternalConfigDummy.rootFolder+"/build").trim();
-            } catch (IOException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            }
-            build = Integer.valueOf(builds);
-            build++;
-            try {
-                Util.writeTextFile(String.valueOf(build),new File(InternalConfigDummy.rootFolder+"/build"),false);
-            } catch (IOException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            }
-            Log.logDebug("Neue Build-Nummer: "+String.valueOf(build));
         }
     }
 

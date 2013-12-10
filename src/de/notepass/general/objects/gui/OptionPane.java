@@ -1,6 +1,6 @@
 package de.notepass.general.objects.gui;
 
-import de.notepass.general.internalConfig.InternalConfigDummy;
+import de.notepass.general.internalConfig.GeneralConfig;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -50,8 +50,8 @@ public class OptionPane {
         public static Response ShowConfirmDialog(Stage primaryStage, String message, String title) {
             VBox vb = new VBox();
             Scene scene = new Scene(vb);
-            vb.setPadding(InternalConfigDummy.guiDefaultPadding);
-            vb.setSpacing(InternalConfigDummy.guiDefaultSpacing);
+            vb.setPadding(GeneralConfig.guiDefaultPadding);
+            vb.setSpacing(GeneralConfig.guiDefaultSpacing);
             final Dialog dial = new Dialog(title,primaryStage,scene /*, "res/Confirm.png"*/);
             Button yesButton = new Button("yes");
             yesButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -65,11 +65,11 @@ public class OptionPane {
             BorderPane bp = new BorderPane();
             HBox buttons = new HBox();
             buttons.setAlignment(Pos.CENTER);
-            buttons.setSpacing(InternalConfigDummy.guiDefaultSpacing);
+            buttons.setSpacing(GeneralConfig.guiDefaultSpacing);
             buttons.getChildren().addAll(yesButton);
             bp.setCenter(buttons);
             HBox msg = new HBox();
-            msg.setSpacing(InternalConfigDummy.guiDefaultSpacing);
+            msg.setSpacing(GeneralConfig.guiDefaultSpacing);
             msg.getChildren().addAll(msg,bp);
             dial.showDialog();
             return buttonSelected;
