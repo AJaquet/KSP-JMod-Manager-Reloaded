@@ -3,7 +3,7 @@ package de.notepass.KSPModManager.gui;
 import de.notepass.KSPModManager.ButtonListener;
 import de.notepass.KSPModManager.SwingConfig;
 import de.notepass.KSPModManager.KSPModManager;
-import de.notepass.general.internalConfig.GeneralConfig;
+import de.notepass.KSPModManager.InternalConfig;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

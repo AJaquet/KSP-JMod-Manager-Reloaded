@@ -1,182 +1,204 @@
-/*
- This is a Dummy-File fpr the internalConfig. It's normally specialised for every project. But this File is the "master" File
- containing EVERY configuration Part.
- */
-
-
 package de.notepass.general.internalConfig;
 
-import de.notepass.general.objects.gui.StatusBar;
-import de.notepass.general.util.Util;
 import de.notepass.general.objects.gui.GroupBox;
 import de.notepass.general.objects.gui.StatusBarItem;
 import de.notepass.general.objects.gui.TitleBar;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import de.notepass.general.util.Util;
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.input.KeyCombination;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
-import java.awt.*;
+import java.io.File;
 
-//This thing here just brings up some Config. If you want to change one of these, have fun with recompiling Everything... (I don't think it's hard to do it, just Updating is not... nice)
+/**
+ * <p>This class contains the default Internal Configuration.
+ * If you can't change something in the config-file you can hopefully here</p>
+ */
 public class InternalConfigDummy {
-    @Deprecated
-    //Internal Configs
+    /**
+     * <p>Timeout before two mouse clicks in a row wont be seen as a double-click anymore
+     * Will be used, when I will start making my own total UI</p>
+     */
+    final public static double DOUBLIC_CLICK_TIMEOUT =1000;
 
-    //General Config
-    public static double doubleClickTimeout=1000;
 
-    //The internal Version. Important for the modules!
-    public static String version = "0.1";
+    //Folder Configuration
+    /**
+     * Root-Folder in which all data will be written
+     */
+    final public static String ROOT_FOLDER = "data";
+    /**
+     * Folder for configuration scripts. Will inherit from {@link de.notepass.general.internalConfig.InternalConfigDummy#ROOT_FOLDER}.
+     */
+    final public static String CONFIG_ROOT = ROOT_FOLDER +"/conf";
+    /**
+     * Root-Folder for language files.
+     */
+    final public static String LANG_ROOT = ROOT_FOLDER +"/language";
 
-    //The showed version. Just some Makeup for the end-User
-    public static String showedVersion="Closed Alpha 1 (Internal Version: "+version+")";
 
-    //Kind of Release
-    //TODO: CHANGE TYPE OF RELEASE!
-    public static String versionTypeUnreleased = "Unreleased Build";
-    public static String versionTypeDev = "Developer Build";
-    public static String versionTypeTest = "Test Build";
-    public static String versionTypeRelease = "Release Build";
-
-    public static String versionType = "Unreleased Build";
-
-    //Config for the FileSystem
-    public static String rootFolder = "data";
-    public static String configRoot = rootFolder+"/conf";
-    public static String tempRoot = rootFolder+"/temp";
-    public static String templateRoot = rootFolder+"/template";
-    public static String varRoot = rootFolder + "/variables";
 
     //Config for the logger
-    public static String logConfPath=rootFolder+"/conf/log_conf.xml";
-    public static String logXMLlog_config="/log_config";
-    public static String logXMLpath="/path";
-    public static String logXMLlogDebug="/logDebug";
-    public static String logXMLlogInfo="/logInfo";
-    public static String logXMLlogWarn="/logWarn";
-    public static String logXMLlogError="/logError";
-    public static String logXMLlogDebugText="/logDebugText";
-    public static String logXMLlogInfoText="/logInfoText";
-    public static String logXMLlogWarnText="/logWarnText";
-    public static String logXMLlogErrorText="/logErrorText";
-    public static String logXMLdateTimeFormat="/dateTimeFormat";
-    public static String logXMLdateTimePrefix="/dateTimePrefix";
-    public static String logXMLdateTimeSuffix="/dateTimeSuffix";
+    /**
+     * Folder for configuration of the logger. Will inherit from {@link de.notepass.general.internalConfig.InternalConfigDummy#ROOT_FOLDER}.
+     */
+//    final public static String LOG_CONF_PATH = ROOT_FOLDER +"/conf/log_conf.xml";
+    /**
+     * Root XPath node for the log-Configuration.
+     */
+//    public static String LOG_XML_LOG_CONFIG ="/log_config";
+    /**
+     * XPath for the Localisation of the Log-File.
+     */
+//    public static String LOG_XML_PATH ="/path";
+    /**
+     * XPath for telling wether "Debug"-level messages should be logged or not.
+     */
+//    public static String logXMLlogDebug="/logDebug";
+    /**
+     * XPath for telling wether "Info"-level messages should be logged or not.
+     */
+//    public static String logXMLlogInfo="/logInfo";
+    /**
+     * XPath for telling wether "Warning"-level messages should be logged or not.
+     */
+//    public static String logXMLlogWarn="/logWarn";
+    /**
+     * XPath for telling wether "Error"-level messages should be logged or not.
+     */
+//    public static String logXMLlogError="/logError";
+    /**
+     * XPath for the prefix of "Debug"-level messages.
+     */
+//    public static String logXMLlogDebugText="/logDebugText";
+    /**
+     * XPath for the prefix of "Info"-level messages.
+     */
+//    public static String logXMLlogInfoText="/logInfoText";
+    /**
+     * XPath for the prefix of "Warning"-level messages.
+     */
+//    public static String logXMLlogWarnText="/logWarnText";
+    /**
+     * XPath for the prefix of "Error"-level messages.
+     */
+//    public static String logXMLlogErrorText="/logErrorText";
+    /**
+     * XPath for the date formatting.
+     */
+//    public static String logXMLdateTimeFormat="/dateTimeFormat";
+    /**
+     * XPath for the prefix of the date.
+     */
+//    public static String logXMLdateTimePrefix="/dateTimePrefix";
+    /**
+     * XPath for the suffix of the date.
+     */
+//    public static String logXMLdateTimeSuffix="/dateTimeSuffix";
 
-    //Config for Variables
-    public static String varXMLcontent="/variable/content/text()";
-    public static String varInitalPattern = "%%im::";
-    public static String varEndPattern = "%%";
 
-    //Config for savefiles
-    public static String saveRoot=rootFolder+"/savefiles";
-    public static String invoiceSaveRoot=saveRoot+"/invoice";
-    public static String customerSaveRoot=saveRoot+"/customer";
-    public static String tableSaveRoot=saveRoot+"/table";
 
-    //Config for archive
-    public static String archiveRoot=rootFolder+"/archive";
-    public static String invoiceArchiveRoot=archiveRoot+"/invoice";
+    //Properties Configuration
+    /**
+     * <p>Configuration File</p>
+     */
+    final public static File CONFIG_FILE = new File(CONFIG_ROOT+"/configuration.properties");
+    /**
+     * <p>The prefix for the log-properties</p>
+     */
+    final public static String CONFIG_LOG_PREFIX = "log.";
+    /**
+     *<p>The prefix for the main-properties</p>
+     */
+    final public static String CONFIG_MAIN_PREFIX = "main.";
+    /**
+     * <p>Config-properties for path of the log-file</p>
+     */
+    final public static String CONFIG_LOG_FILEPATH = "path";
+    /**
+     * <p>Config-properties for boolean value to decide if debug-messages should be logged</p>
+     */
+    final public static String CONFIG_LOG_LOGDEBUG = "debug";
+    /**
+     * <p>Config-properties for boolean value to decide if warning-messages should be logged</p>
+     */
+    final public static String CONFIG_LOG_LOGWARN = "warn";
+    /**
+     * <p>Config-properties for boolean value to decide if info-messages should be logged</p>
+     */
+    final public static String CONFIG_LOG_LOGINFO = "info";
+    /**
+     * <p>Config-properties for boolean value to decide if error-messages should be logged</p>
+     */
+    final public static String CONFIG_LOG_LOGERROR = "error";
+    /**
+     * <p>Config-properties for the debug-log-prefix</p>
+     */
+    final public static String CONFIG_LOG_DEBUGTEXT = "debugText";
+    /**
+     * <p>Config-properties for the warning-log-prefix</p>
+     */
+    final public static String CONFIG_LOG_WARNTEXT = "warnText";
+    /**
+     * <p>Config-properties for the info-log-prefix</p>
+     */
+    final public static String CONFIG_LOG_INFOTEXT = "infoText";
+    /**
+     * <p>Config-properties for the error-log-prefix</p>
+     */
+    final public static String CONFIG_LOG_ERRORTEXT = "errorText";
+    /**
+     * <p>Config-properties for the date/time format</p>
+     */
+    final public static String CONFIG_LOG_DATETIMEFORMAT = "dateTimeFormat";
+    /**
+     * <p>Config-properties for the date/time prefix</p>
+     */
+    final public static String CONFIG_LOG_DATETIMEPREFIX = "dateTimePrefix";
+    /**
+     * <p>Config-properties for the date/time suffix</p>
+     */
+    final public static String CONFIG_LOG_DATETIMESUFFIX = "dateTimeSuffix";
+    /**
+     * <p>Config-properties for the path of the language file</p>
+     */
+    final public static String CONFIG_MAIN_LANGFILE = "langFile";
 
-    //Config for languages-files
-    public static String langRoot=rootFolder+"/language";
 
-    //Config for external libs
-    public static String externalRoot=rootFolder+"/external";
-    public static String modulesRoot=externalRoot+"/lib";
-    public static String rendererRoot=externalRoot+"/lib";
-    public static String guiRoot=externalRoot+"/lib";
-    public static String externalConfigRoot=externalRoot+"/config";
-    public static String externalTempRoot=externalRoot+"/temp";
 
-    //Config for Installer
-    public static String langNameXpath="/lang/@display";
-    public static String langLocaleXpath="/lang/@code";
-    public static String stdLangFile="en_GB.xml";
+    //GUI Configuration
+    /**
+     * CSS-Files needed to be loaded for the new JavaFX-Elements
+     */
+    final public static String[] CSS_FILES = {GroupBox.cssFile, StatusBarItem.cssFile, Util.createLoadString("style/General.css"), TitleBar.cssFile};
+    /**
+     * Default-Padding value for the FX-GUI
+     */
+    final public static Insets GUI_DEFAULT_PADDING = new Insets(10,10,10,10);
+    /**
+     * Default VGap for the GridPanes
+     */
+    final public static double GUI_DEFAULT_VGAP = 10;
+    /**
+     * Default HGap for the GridPanes
+     */
+    final public static double GUI_DEFAULT_HGAP = 10;
+    /**
+     * Default Spacing for the GridPanes
+     */
+    final public static double GUI_DEFAULT_SPACING = 5;
 
-    //Config for the currency
-    public static String currencyRoot = rootFolder+"/currency";
-    public static String currencyDisplayXpath = "/currency/@display";
-    public static String currencyNameXpath = "/currency/name";
-    public static String currencySymbolXpath = "/currency/symbol";
-    public static String currencyIsoXpath="/currency/ISO4217";
 
-    //Config for General gui Stuff
-    public static String[] cssFiles = {GroupBox.cssFile, StatusBarItem.cssFile, Util.createLoadString("style/General.css"), TitleBar.cssFile};
-    public static Insets guiDefaultPadding = new Insets(10,10,10,10);
-    public static double guiDefaultVGap = 10;
-    public static double guiDefaultHGap = 10;
-    public static double guiDefaultSpacing = 5;
 
     //Config for GroupBoxes
-    public static double groupBoxDefaultVGap = 5;
-    public static double groupBoxDefaultHGap = 5;
-    public static Insets groupBoxDefaultPadding = new Insets(5,5,5,5);
-
-    //Standard GUI
-    public static Scene buildStandardGui(final Stage primaryStage, final Pane contentPane, double width, double height) {
-        @Deprecated
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
-        VBox lowContentPane = new VBox();
-        lowContentPane.getStylesheets().addAll(InternalConfigDummy.cssFiles);
-        contentPane.getStylesheets().addAll(InternalConfigDummy.cssFiles);
-        contentPane.getStyleClass().addAll("GeneralPane");
-        //contentPane.setStyle("-fx-background-color: grey;");
-        contentPane.setPadding(InternalConfigDummy.guiDefaultPadding);
-        lowContentPane.getStyleClass().addAll("TitleBarPane","LowContentPane");
-        final TitleBar tb = new TitleBar(primaryStage,true,true,true);
-        final MenuBar mb = buildStandardMenuBar(primaryStage);
-        //Resize the ContentPane on resize
-        tb.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                Dimension contentPaneSize = new Dimension((int) primaryStage.getWidth(),(int) primaryStage.getHeight());
-                tb.doubleCLickAction();
-                if (!contentPaneSize.equals(new Dimension((int) primaryStage.getWidth(),(int) primaryStage.getHeight()))) {
-                    contentPane.setMinWidth(primaryStage.getWidth()-2);
-                    contentPane.setMaxWidth(primaryStage.getWidth() - 2);
-                    contentPane.setMaxHeight(primaryStage.getHeight() - tb.getHeight() - mb.getHeight() - 2);
-                    contentPane.setMinHeight(primaryStage.getHeight() - tb.getHeight() - mb.getHeight() - 2);
-                }
-            }
-        });
-        lowContentPane.getChildren().addAll(tb,mb,contentPane);
-        Scene returnScene = new Scene(lowContentPane, width, height);
-        return returnScene;
-    }
-
-    //Standard GUI Elements
-    public static MenuBar buildStandardMenuBar(final Stage primaryStage, final StatusBarItem ... statusItems) {
-        //Declaration
-        MenuBar mb_std=new MenuBar();
-        Menu m_file = new Menu(Util.translate("guiMainMenuBarFile"));
-        StatusBar statusBar = new StatusBar();
-        MenuItem mi_exit = new MenuItem(Util.translate("guiMainMenuItemExit"));
-        mi_exit.setAccelerator(KeyCombination.keyCombination("Esc"));
-
-        //Linking
-        m_file.getItems().addAll(mi_exit);
-        mb_std.getMenus().addAll(m_file);
-
-        //Action Handler
-        mi_exit.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                primaryStage.close();
-            }
-        });
-
-        return mb_std;
-    }
-
-
+    /**
+     * Default VGap for the GridPane of the groupBox-Element
+     */
+    final public static double GROUPBOX_DEFAULT_VGAP = 5;
+    /**
+     * Default HGap for the GridPane of the groupBox-Element
+     */
+    final public static double GROUPBOX_DEFAULT_HGAP = 5;
+    /**
+     * Default padding for the GridPane of the groupBox-Element
+     */
+    final public static Insets GROUPBOX_DEFAULT_PADDING = new Insets(5,5,5,5);
 }

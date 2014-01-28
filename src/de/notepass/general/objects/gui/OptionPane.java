@@ -1,6 +1,6 @@
 package de.notepass.general.objects.gui;
 
-import de.notepass.general.internalConfig.GeneralConfig;
+import de.notepass.general.internalConfig.InternalConfigDummy;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -14,13 +14,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-/**
- * Created with IntelliJ IDEA.
- * User: kim.hayo
- * Date: 27.11.13
- * Time: 16:11
- * To change this template use File | Settings | File Templates.
- */
+@Deprecated
 public class OptionPane {
     public enum Response { NO, YES, CANCEL};
     private static Response buttonSelected = Response.CANCEL;
@@ -50,8 +44,8 @@ public class OptionPane {
         public static Response ShowConfirmDialog(Stage primaryStage, String message, String title) {
             VBox vb = new VBox();
             Scene scene = new Scene(vb);
-            vb.setPadding(GeneralConfig.guiDefaultPadding);
-            vb.setSpacing(GeneralConfig.guiDefaultSpacing);
+            vb.setPadding(InternalConfigDummy.GUI_DEFAULT_PADDING);
+            vb.setSpacing(InternalConfigDummy.GUI_DEFAULT_SPACING);
             final Dialog dial = new Dialog(title,primaryStage,scene /*, "res/Confirm.png"*/);
             Button yesButton = new Button("yes");
             yesButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -65,11 +59,11 @@ public class OptionPane {
             BorderPane bp = new BorderPane();
             HBox buttons = new HBox();
             buttons.setAlignment(Pos.CENTER);
-            buttons.setSpacing(GeneralConfig.guiDefaultSpacing);
+            buttons.setSpacing(InternalConfigDummy.GUI_DEFAULT_SPACING);
             buttons.getChildren().addAll(yesButton);
             bp.setCenter(buttons);
             HBox msg = new HBox();
-            msg.setSpacing(GeneralConfig.guiDefaultSpacing);
+            msg.setSpacing(InternalConfigDummy.GUI_DEFAULT_SPACING);
             msg.getChildren().addAll(msg,bp);
             dial.showDialog();
             return buttonSelected;

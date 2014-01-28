@@ -140,18 +140,18 @@ public class FxGui extends Application {
 
         //These are the Panes for the Tab-Contents. Only in these Stuff like Buttons etc. are Stored
         mainLayoutModlist = new GridPane();
-        mainLayoutModlist.setHgap(InternalConfig.groupBoxDefaultHGap);
-        mainLayoutModlist.setVgap(InternalConfig.groupBoxDefaultVGap);
-        mainLayoutModlist.setPadding(InternalConfig.guiDefaultPadding);
+        mainLayoutModlist.setHgap(InternalConfig.GROUPBOX_DEFAULT_HGAP);
+        mainLayoutModlist.setVgap(InternalConfig.GROUPBOX_DEFAULT_VGAP);
+        mainLayoutModlist.setPadding(InternalConfig.GUI_DEFAULT_PADDING);
 
         mainLayoutAddMod = new GridPane();
-        mainLayoutAddMod.setHgap(InternalConfig.guiDefaultHGap);
-        mainLayoutAddMod.setVgap(InternalConfig.guiDefaultVGap);
-        mainLayoutAddMod.setPadding(InternalConfig.guiDefaultPadding);
+        mainLayoutAddMod.setHgap(InternalConfig.GUI_DEFAULT_HGAP);
+        mainLayoutAddMod.setVgap(InternalConfig.GUI_DEFAULT_VGAP);
+        mainLayoutAddMod.setPadding(InternalConfig.GUI_DEFAULT_PADDING);
 
         //This is the Tab-Pane. It delivers the Tabs
         layoutTab = new TabPane();
-        layoutTab.getStylesheets().addAll(InternalConfig.cssFiles);
+        layoutTab.getStylesheets().addAll(InternalConfig.CSS_FILES);
         layoutTab.getStyleClass().addAll("GeneralPane"); //TODO: TRANSLATE
         //Tabs:
         //Modlist
@@ -223,7 +223,7 @@ public class FxGui extends Application {
 
     private ArrayList<Mod> getHDDMods() throws ParserConfigurationException, SAXException, XPathExpressionException, IOException {
         ArrayList<Mod> worker = new ArrayList<Mod>();
-        String [] hddMods = Util.listFiles(InternalConfig.modConfigRootFolder);
+        String [] hddMods = Util.listFiles(InternalConfig.MOD_CONFIG_ROOT_FOLDER);
         for (String hddMod : hddMods) {
             Mod m = Mod.loadFromFile(hddMod.replace(".xml", ""));   //TODO: Add to InternalConfig
             worker.add(m);
@@ -260,7 +260,7 @@ public class FxGui extends Application {
         /* AVIABLE MODS */
         //The GroupBox for the Aviable Mods
         gb_aviabledMods = new GroupBox("Installed Mods", TitlePos.POS_CENTER); //TODO: TRANSLATE
-        gb_aviabledMods.setPadding(InternalConfig.groupBoxDefaultPadding);
+        gb_aviabledMods.setPadding(InternalConfig.GROUPBOX_DEFAULT_PADDING);
 
         //The ListBox for the aviable Mods
         lb_aviableMods = new ListView<String>();
@@ -304,9 +304,9 @@ public class FxGui extends Application {
         /* MOD INFORMATION */
         //GroupBox for the ModInformation
         gb_modInformation = new GroupBox("Mod Information",TitlePos.POS_CENTER);     //TODO: TRANSLATE
-        gb_modInformation.setPadding(InternalConfig.groupBoxDefaultPadding);
-        gb_modInformation.contentPane.setHgap(InternalConfig.groupBoxDefaultHGap);
-        gb_modInformation.contentPane.setVgap(InternalConfig.groupBoxDefaultVGap);
+        gb_modInformation.setPadding(InternalConfig.GROUPBOX_DEFAULT_PADDING);
+        gb_modInformation.contentPane.setHgap(InternalConfig.GROUPBOX_DEFAULT_HGAP);
+        gb_modInformation.contentPane.setVgap(InternalConfig.GROUPBOX_DEFAULT_VGAP);
 
         //Mod-Information
         ti_modInfoRoot = new TreeItem<String>("Mod"); //Todo: Translate
@@ -412,11 +412,11 @@ public class FxGui extends Application {
 
         /*========================== CONTENT ==========================*/
         final GroupBox gb_dllFilesAddMod = new GroupBox("DLL-Files",TitlePos.POS_CENTER); //TODO: Translate
-        gb_dllFilesAddMod.setPadding(InternalConfig.groupBoxDefaultPadding);
+        gb_dllFilesAddMod.setPadding(InternalConfig.GROUPBOX_DEFAULT_PADDING);
         final GroupBox gb_partFilesAddMod = new GroupBox("Part-Files",TitlePos.POS_CENTER); //TODO: Translate
-        gb_partFilesAddMod.setPadding(InternalConfig.groupBoxDefaultPadding);
+        gb_partFilesAddMod.setPadding(InternalConfig.GROUPBOX_DEFAULT_PADDING);
         final GroupBox gb_modConfigAddMod = new GroupBox("Mod-Config",TitlePos.POS_CENTER); //TODO: Translate
-        gb_modConfigAddMod.setPadding(InternalConfig.groupBoxDefaultPadding);
+        gb_modConfigAddMod.setPadding(InternalConfig.GROUPBOX_DEFAULT_PADDING);
 
         mainLayoutAddMod.add(gb_dllFilesAddMod,0,0);
         mainLayoutAddMod.add(gb_partFilesAddMod,1,0);
@@ -447,19 +447,19 @@ public class FxGui extends Application {
 
 
     private static void generateFolderStructure() {
-        if (!Util.exist(InternalConfig.rootFolder)) {
+        if (!Util.exist(InternalConfig.ROOT_FOLDER)) {
             Log.logDebug("Root folder not Found. Generating it");  //TODO: translate
-            new File(InternalConfig.rootFolder).mkdirs();
+            new File(InternalConfig.ROOT_FOLDER).mkdirs();
         }
 
-        if (!Util.exist(InternalConfig.modRootFolder)) {
+        if (!Util.exist(InternalConfig.MOD_ROOT_FOLDER)) {
             Log.logDebug("Mod root folder not Found. Generating it");  //TODO: translate
-            new File(InternalConfig.modRootFolder).mkdirs();
+            new File(InternalConfig.MOD_ROOT_FOLDER).mkdirs();
         }
 
-        if (!Util.exist(InternalConfig.modConfigRootFolder)) {
+        if (!Util.exist(InternalConfig.MOD_CONFIG_ROOT_FOLDER)) {
             Log.logDebug("Mod root config folder not Found. Generating it");  //TODO: translate
-            new File(InternalConfig.modConfigRootFolder).mkdirs();
+            new File(InternalConfig.MOD_CONFIG_ROOT_FOLDER).mkdirs();
         }
     }
 }

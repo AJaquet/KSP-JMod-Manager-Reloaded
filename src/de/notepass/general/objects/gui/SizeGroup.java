@@ -6,6 +6,11 @@ import java.util.ArrayList;
 
 //Resizes all the Elements in the Group to the largest element
 //You must show the Window before using setElementDimension!
+
+/**
+ * <p>Please use ColumnConstrains instead</p>
+ */
+@Deprecated
 public class SizeGroup {
     private boolean setHeight;
     private boolean setWidth;

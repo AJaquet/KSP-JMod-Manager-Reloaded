@@ -2,6 +2,10 @@ package de.notepass.general.objects.gui;
 
 import javafx.geometry.Pos;
 
+/**
+ * <p>The title-pos triggers. Will be later replaced.</p>
+ */
+@Deprecated
 public class TitlePos {
     private Pos mainPos;
     private String posString;

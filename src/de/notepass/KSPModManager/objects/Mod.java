@@ -4,15 +4,12 @@ import de.notepass.KSPModManager.InternalConfig;
 import de.notepass.KSPModManager.Util;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import javax.swing.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -150,18 +147,18 @@ public class Mod {
 
     public static Mod loadFromFile(UUID ident) throws ParserConfigurationException, SAXException, XPathExpressionException, IOException {
         Mod readMod = new Mod();
-        readMod.setName(Util.nodeListToString(Util.executeXPath(giveFileName(ident),InternalConfig.modXpathName)));
-        readMod.setVersion(Util.nodeListToString(Util.executeXPath(giveFileName(ident),InternalConfig.modXpathVersion)));
+        readMod.setName(Util.nodeListToString(Util.executeXPath(giveFileName(ident),InternalConfig.MOD_XPATH_NAME)));
+        readMod.setVersion(Util.nodeListToString(Util.executeXPath(giveFileName(ident),InternalConfig.MOD_XPATH_VERSION)));
         ArrayList<String> dllFiles = new ArrayList<String>();
         int i=0;
-        while (!Util.nodeListToString(Util.executeXPath(giveFileName(ident), InternalConfig.modXpathDllRepetition + String.valueOf(i))).equals("")) {
-            dllFiles.add(Util.nodeListToString(Util.executeXPath(giveFileName(ident), InternalConfig.modXpathDllRepetition + String.valueOf(i)+"/text()")));
+        while (!Util.nodeListToString(Util.executeXPath(giveFileName(ident), InternalConfig.MOD_XPATH_DLL_REPETITION + String.valueOf(i))).equals("")) {
+            dllFiles.add(Util.nodeListToString(Util.executeXPath(giveFileName(ident), InternalConfig.MOD_XPATH_DLL_REPETITION + String.valueOf(i)+"/text()")));
             i++;
         }
         ArrayList<String> partFiles = new ArrayList<String>();
         i=0;
-        while (!Util.nodeListToString(Util.executeXPath(giveFileName(ident),InternalConfig.modXpathPartRepetition+String.valueOf(i))).equals("")) {
-            partFiles.add(Util.nodeListToString(Util.executeXPath(giveFileName(ident),InternalConfig.modXpathPartRepetition+String.valueOf(i)+"/text()")));
+        while (!Util.nodeListToString(Util.executeXPath(giveFileName(ident),InternalConfig.MOD_XPATH_PART_REPETITION +String.valueOf(i))).equals("")) {
+            partFiles.add(Util.nodeListToString(Util.executeXPath(giveFileName(ident),InternalConfig.MOD_XPATH_PART_REPETITION +String.valueOf(i)+"/text()")));
             i++;
         }
         readMod.setDllFiles(dllFiles);
@@ -174,6 +171,6 @@ public class Mod {
     }
 
     private static String giveFileName(UUID ident) {
-        return InternalConfig.modConfigRootFolder+"/"+ident.toString()+".xml";
+        return InternalConfig.MOD_CONFIG_ROOT_FOLDER +"/"+ident.toString()+".xml";
     }
 }

@@ -7,6 +7,14 @@ import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
 
+/**
+ * Created with IntelliJ IDEA.
+ * User: kim.hayo
+ * Date: 26.11.13
+ * Time: 14:56
+ * To change this template use File | Settings | File Templates.
+ */
+@Deprecated
 public class StatusBarItem extends GridPane {
     private ArrayList<Node> content = new ArrayList<Node>();
     private double width = 0;
